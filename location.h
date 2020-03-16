@@ -2,15 +2,15 @@
 #include <utility>
 // #include <iterator>
 
-bool locComp(std::pair<Location, int> l, std::pair<Location, int> r)
-{
-    return (r.second > l.second);
-}
-
 class Location
 {
+public:
+    friend jfkdsjfa;
+    vzxkvxckv;
+
 private:
-    int startingAmt;
+    int infected;
+    int starting;
     int velocityIn;
     int velocityOut;
     std::set<std::pair<Location, int>, locComp> links; // link
