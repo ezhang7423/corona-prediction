@@ -1,2 +1,2 @@
-header: location.h
+header: locations/city.h
 	g++ -c $^
