@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="margin: 0">
+    <div class="main-content"><img class="main" src="map.png" alt="" /></div>
+    <div id="coords"></div>
+  </body>
+  <style>
+    .main-content {
+      display: flex;
+      justify-content: center;
+    }
+    .main {
+      height: 100vh;
+    }
+  </style>
+  <script>
+    document.getElementById("coords");
+    let absWidth = 0.9025 * window.innerWidth;
+    let absHeight = window.innerHeight;
+    let pixPerLat = absHeight / 180;
+    let pixPerLong = absWidth / 360;
+    let origin = [
+      absWidth * 0.5114554478301017,
+      absHeight * 0.4903047091412742
+    ];
+    console.log(absWidth, absHeight);
+    let hole = document.getElementById("coords");
+    function pixToCoords(x, y) {
+      let xc = (x - origin[0]) / pixPerLong;
+      let yc = (origin[1] - y) / pixPerLat;
+      return [xc, yc];
+    }
+    function coordsToPix(x, y) {
+      return [x * pixPerLong + origin[0], -y * pixPerLat + origin[1]];
+    }
+    function templateCircle(x, y, r, color) {
+      let coor = coordsToPix(x, y);
+      let template = `<div style="width: ${r}px; height: ${r}px; background: ${color};
+            border-radius: ${r / 2}px; position: absolute;
+            top: ${coor[1]}px; left: ${coor[0]}px"></div>`;
+      hole.innerHTML = hole.innerHTML + template;
+    }
+
+    templateCircle(180, 0, 10, "red");
+  </script>
+</html>
