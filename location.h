@@ -2,9 +2,11 @@
 #include <utility>
 // #include <iterator>
 
-class locComp
+bool locComp(std::pair<Location, int> l, std::pair<Location, int> r)
 {
-};
+    return (r.second > l.second);
+}
+
 class Location
 {
 private:
@@ -13,4 +15,5 @@ private:
     int velocityOut;
     std::set<std::pair<Location, int>, locComp> links; // link
 };
+
 typedef std::set<std::pair<Location, int>, locComp> link;
